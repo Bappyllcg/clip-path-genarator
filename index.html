@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Clip-Path Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="demo-area">
+                <div class="demo-container boxed-item">
+                    <div class="demo-image" id="demo-element"></div>
+                    <div id="control-points-container"></div>
+                </div>
+                <div class="control-group boxed-item mb10">
+                    <label for="demo-size">Generated CSS</label>
+                    <div class="code-container">
+                        <pre><code id="css-code">/* Select a shape to generate CSS */</code></pre>
+                        <button id="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <aside class="tool-sidebar">
+                <div class="shape-selector mb10">
+                    <!-- <h2>Select Shape</h2> -->
+                    <div class="shape-grid">
+                        <div class="shape-item" data-shape="triangle">
+                            <div class="shape-preview triangle" style="--shape-bg: #FF5252"></div>
+                            <span>Triangle</span>
+                        </div>
+                        <div class="shape-item" data-shape="trapezoid">
+                            <div class="shape-preview trapezoid" style="--shape-bg: #7C4DFF"></div>
+                            <span>Trapezoid</span>
+                        </div>
+                        <div class="shape-item" data-shape="parallelogram">
+                            <div class="shape-preview parallelogram" style="--shape-bg: #00BCD4"></div>
+                            <span>Parallelogram</span>
+                        </div>
+                        <div class="shape-item" data-shape="rhombus" style="--shape-bg: #4CAF50">
+                            <div class="shape-preview rhombus"></div>
+                            <span>Rhombus</span>
+                        </div>
+                        <div class="shape-item" data-shape="pentagon">
+                            <div class="shape-preview pentagon" style="--shape-bg: #FFC107"></div>
+                            <span>Pentagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="hexagon">
+                            <div class="shape-preview hexagon" style="--shape-bg: #FF9800"></div>
+                            <span>Hexagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="heptagon">
+                            <div class="shape-preview heptagon" style="--shape-bg: #FF5722"></div>
+                            <span>Heptagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="octagon">
+                            <div class="shape-preview octagon" style="--shape-bg: #795548"></div>
+                            <span>Octagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="nonagon">
+                            <div class="shape-preview nonagon" style="--shape-bg: #9E9E9E"></div>
+                            <span>Nonagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="decagon">
+                            <div class="shape-preview decagon" style="--shape-bg: #607D8B"></div>
+                            <span>Decagon</span>
+                        </div>
+                        <div class="shape-item" data-shape="bevel">
+                            <div class="shape-preview bevel" style="--shape-bg: #E91E63"></div>
+                            <span>Bevel</span>
+                        </div>
+                        <div class="shape-item" data-shape="rabbet">
+                            <div class="shape-preview rabbet" style="--shape-bg: #9C27B0"></div>
+                            <span>Rabbet</span>
+                        </div>
+                        <div class="shape-item" data-shape="left-arrow">
+                            <div class="shape-preview left-arrow" style="--shape-bg: #673AB7"></div>
+                            <span>Left Arrow</span>
+                        </div>
+                        <div class="shape-item" data-shape="right-arrow">
+                            <div class="shape-preview right-arrow" style="--shape-bg: #3F51B5"></div>
+                            <span>Right Arrow</span>
+                        </div>
+                        <div class="shape-item" data-shape="left-point">
+                            <div class="shape-preview left-point" style="--shape-bg: #2196F3"></div>
+                            <span>Left Point</span>
+                        </div>
+                        <div class="shape-item" data-shape="right-point">
+                            <div class="shape-preview right-point" style="--shape-bg: #03A9F4"></div>
+                            <span>Right Point</span>
+                        </div>
+                        <div class="shape-item" data-shape="star">
+                            <div class="shape-preview star" style="--shape-bg: #009688"></div>
+                            <span>Star</span>
+                        </div>
+                        <div class="shape-item" data-shape="cross">
+                            <div class="shape-preview cross" style="--shape-bg: #8BC34A"></div>
+                            <span>Cross</span>
+                        </div>
+                        <div class="shape-item" data-shape="message">
+                            <div class="shape-preview message" style="--shape-bg: #CDDC39"></div>
+                            <span>Message</span>
+                        </div>
+                        <div class="shape-item" data-shape="close">
+                            <div class="shape-preview close" style="--shape-bg: #FFEB3B"></div>
+                            <span>Close</span>
+                        </div>
+                        <div class="shape-item" data-shape="frame">
+                            <div class="shape-preview frame" style="--shape-bg: #FF4081"></div>
+                            <span>Frame</span>
+                        </div>
+                        <div class="shape-item" data-shape="circle">
+                            <div class="shape-preview circle" style="--shape-bg: #7B1FA2"></div>
+                            <span>Circle</span>
+                        </div>
+                        <div class="shape-item" data-shape="ellipse">
+                            <div class="shape-preview ellipse" style="--shape-bg: #1976D2"></div>
+                            <span>Ellipse</span>
+                        </div>
+                        <div class="shape-item" data-shape="custom-polygon">
+                            <div class="shape-preview custom-polygon" style="--shape-bg: #388E3C"></div>
+                            <span>Custom Polygon</span>
+                        </div>   
+                    </div>
+                </div>
+
+                <div class="control-group boxed-item mb10 flex">
+                    <label for="demo-size">Demo Size:</label>
+                    <div class="size-buttons">
+                        <button class="size-btn" data-size="200">200</button>
+                        <button class="size-btn active" data-size="300">300</button>
+                        <button class="size-btn" data-size="400">400</button>
+                    </div>
+                </div>
+
+                <div class="boxed-item mb10">
+                    <div class="control-group mb10">
+                        <label>Demo Background:</label>
+                        <div class="background-options">
+                            <div class="bg-option" data-bg="url1">
+                                <img src="images/bg1.jpg" alt="Background 1">
+                            </div>
+                            <div class="bg-option" data-bg="url2">
+                                <img src="images/bg2.jpg" alt="Background 2">
+                            </div>
+                            <div class="bg-option" data-bg="url3">
+                                <img src="images/bg3.jpg" alt="Background 3">
+                            </div>
+                            <div class="bg-option" data-bg="url4">
+                                <img src="images/bg4.jpg" alt="Background 4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="custom-url">Custom URL:</label>
+                        <input type="text" id="custom-url" placeholder="Enter image URL">
+                    </div>
+                </div>
+                    
+
+            </aside>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
